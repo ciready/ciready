@@ -1,0 +1,100 @@
+name: 'Publish - Ubuntu'
+
+
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/*.md'
+      - '.github/workflows/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/*.md'
+      - '.github/workflows/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+
+  schedule:
+    - cron: '37 5 * * 0'
+
+  workflow_dispatch:
+
+
+
+jobs:
+  publish-ubuntu:
+
+
+
+    strategy:
+      matrix:
+        base_image_tag:
+          - '16.04'
+          - '18.04'
+          - '20.04'
+          - 'rolling'
+
+        include:
+          - base_image_tag: '16.04'
+            publish_repotags: |
+              ciready/ubuntu:16.04-ci-c
+              ciready/ubuntu:xenial-ci-c
+
+          - base_image_tag: '18.04'
+            publish_repotags: |
+              ciready/ubuntu:18.04-ci-c
+              ciready/ubuntu:bionic-ci-c
+
+          - base_image_tag: '20.04'
+            publish_repotags: |
+              ciready/ubuntu:20.04-ci-c
+              ciready/ubuntu:focal-ci-c
+              ciready/ubuntu:latest-ci-c
+
+          - base_image_tag: 'rolling'
+            publish_repotags: |
+              ciready/ubuntu:rolling-ci-c
+
+
+
+    name: 'Publish - ubuntu:${{matrix.base_image_tag}}'
+    runs-on: ubuntu-latest
+    steps:
+
+
+      - name: 'Check out the code'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: 'Set up Docker Buildx'
+        uses: docker/setup-buildx-action@v1
+
+
+      - name: 'Login to DockerHub'
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+
+      - name: 'Build and push'
+        uses: docker/build-push-action@v2
+        with:
+          build-args: |
+            base_image_tag=${{matrix.base_image_tag}}
+          context: .
+          file: ./Dockerfile-ubuntu-ci-c
+          platforms: linux/amd64
+          push: true
+          tags: ${{ matrix.publish_repotags }}
