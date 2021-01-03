@@ -1,0 +1,92 @@
+name: 'Publish - OpenSUSE'
+
+
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/*.md'
+      - '.github/workflows/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/*.md'
+      - '.github/workflows/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+
+  schedule:
+    - cron: '39 5 * * 0'
+
+  workflow_dispatch:
+
+
+
+jobs:
+  publish-opensuse:
+
+
+
+    strategy:
+      matrix:
+        base_image_repotag:
+          - 'opensuse/leap:15.1'
+          - 'opensuse/leap:15.2'
+          - 'opensuse/tumbleweed:latest'
+
+        include:
+          - base_image_repotag: 'opensuse/leap:15.1'
+            publish_repotags: |
+              ciready/opensuse:leap-15.1-ci-c
+
+          - base_image_repotag: 'opensuse/leap:15.2'
+            publish_repotags: |
+              ciready/opensuse:leap-15.2-ci-c
+              ciready/opensuse:leap-latest
+
+          - base_image_repotag: 'opensuse/tumbleweed:latest'
+            publish_repotags: |
+              ciready/opensuse:tumbleweed-latest-ci-c
+
+
+
+    name: 'Publish - ${{matrix.base_image_repotag}}'
+    runs-on: ubuntu-latest
+    steps:
+
+
+      - name: 'Check out the code'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: 'Set up Docker Buildx'
+        uses: docker/setup-buildx-action@v1
+
+
+      - name: 'Login to DockerHub'
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+
+      - name: 'Build and push'
+        uses: docker/build-push-action@v2
+        with:
+          build-args: |
+            base_image_repotag=${{matrix.base_image_repotag}}
+          context: .
+          file: ./Dockerfile-opensuse-ci-c
+          platforms: linux/amd64
+          push: true
+          tags: ${{ matrix.publish_repotags }}
