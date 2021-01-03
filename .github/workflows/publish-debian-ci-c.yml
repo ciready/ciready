@@ -1,4 +1,4 @@
-name: 'Publish - Debian'
+name: 'Publish - Debian - C'
 
 
 
@@ -6,32 +6,26 @@ on:
   pull_request:
     branches:
       - master
-    paths-ignore:
-      - '.github/*.md'
-      - '.github/workflows/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'README.md'
+    paths:
+      - '.github/workflows/publish-debian-ci-c'
+      - 'Dockerfile-debian-ci-c'
 
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/*.md'
-      - '.github/workflows/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'README.md'
+    paths:
+      - '.github/workflows/publish-debian-ci-c'
+      - 'Dockerfile-debian-ci-c'
 
   schedule:
-    - cron: '39 5 * * 0'
+    - cron: '13 5 * * 0'
 
   workflow_dispatch:
 
 
 
 jobs:
-  publish-debian:
+  publish-debian-c:
 
 
 

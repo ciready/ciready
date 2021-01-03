@@ -1,4 +1,4 @@
-name: 'Publish - Ubuntu'
+name: 'Publish - Ubuntu - C'
 
 
 
@@ -6,32 +6,26 @@ on:
   pull_request:
     branches:
       - master
-    paths-ignore:
-      - '.github/*.md'
-      - '.github/workflows/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'README.md'
+    paths:
+      - '.github/workflows/publish-ubuntu-ci-c'
+      - 'Dockerfile-ubuntu-ci-c'
 
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/*.md'
-      - '.github/workflows/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'README.md'
+    paths:
+      - '.github/workflows/publish-ubuntu-ci-c'
+      - 'Dockerfile-ubuntu-ci-c'
 
   schedule:
-    - cron: '37 5 * * 0'
+    - cron: '15 5 * * 0'
 
   workflow_dispatch:
 
 
 
 jobs:
-  publish-ubuntu:
+  publish-ubuntu-c:
 
 
 
