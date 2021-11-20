@@ -32,7 +32,6 @@ jobs:
     strategy:
       matrix:
         base_image_repotag:
-          - 'opensuse/leap:15.1'
           - 'opensuse/leap:15.2'
           - 'opensuse/leap:15.3'
           - 'opensuse/tumbleweed:latest'
