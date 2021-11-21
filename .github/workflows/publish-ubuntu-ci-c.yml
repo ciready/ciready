@@ -32,17 +32,11 @@ jobs:
     strategy:
       matrix:
         base_image_tag:
-          - '16.04'
           - '18.04'
           - '20.04'
           - 'rolling'
 
         include:
-          - base_image_tag: '16.04'
-            publish_repotags: |
-              ciready/ubuntu:16.04-ci-c
-              ciready/ubuntu:xenial-ci-c
-
           - base_image_tag: '18.04'
             publish_repotags: |
               ciready/ubuntu:18.04-ci-c
