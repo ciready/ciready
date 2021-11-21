@@ -19,3 +19,4 @@ RUN zypper -n install curl wget
 RUN zypper -n install bzip2 gzip tar unzip xz zip
 RUN zypper -n install git
 RUN zypper -n install autoconf automake gcc gcc-c++ libtool m4 make
+RUN zypper -n install findutils
