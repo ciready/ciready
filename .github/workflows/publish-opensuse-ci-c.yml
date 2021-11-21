@@ -37,10 +37,6 @@ jobs:
           - 'opensuse/tumbleweed:latest'
 
         include:
-          - base_image_repotag: 'opensuse/leap:15.1'
-            publish_repotags: |
-              ciready/opensuse:leap-15.1-ci-c
-
           - base_image_repotag: 'opensuse/leap:15.2'
             publish_repotags: |
               ciready/opensuse:leap-15.2-ci-c
