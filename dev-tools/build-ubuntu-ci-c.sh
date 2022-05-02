@@ -13,7 +13,7 @@ set -x
 ### Parse arguments
 #
 if [ "${1:-}" == "" ]; then
-    echo "ERROR: Missing base image tag argument ('$0 20.04')"
+    echo "ERROR: Missing base image tag argument ('$0 22.04')"
     exit 1
 fi
 BASE_IMAGE_TAG=$1

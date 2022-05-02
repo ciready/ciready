@@ -34,6 +34,7 @@ jobs:
         base_image_tag:
           - '18.04'
           - '20.04'
+          - '22.04'
           - 'rolling'
 
         include:
@@ -46,6 +47,11 @@ jobs:
             publish_repotags: |
               ciready/ubuntu:20.04-ci-c
               ciready/ubuntu:focal-ci-c
+
+          - base_image_tag: '22.04'
+            publish_repotags: |
+              ciready/ubuntu:22.04-ci-c
+              ciready/ubuntu:jammy-ci-c
               ciready/ubuntu:latest-ci-c
 
           - base_image_tag: 'rolling'

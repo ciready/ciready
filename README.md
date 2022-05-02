@@ -41,8 +41,8 @@ index 44bef46..9b95c76 100644
  
  
      runs-on: ubuntu-latest
--    container: ubuntu:20.04
-+    container: ciready/ubuntu:20.04-ci-c
+-    container: ubuntu:22.04
++    container: ciready/ubuntu:22.04-ci-c
  
  
  
