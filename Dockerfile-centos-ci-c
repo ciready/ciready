@@ -1,0 +1,19 @@
+### Get CLI arguments
+#
+ARG base_image_tag
+
+
+
+### Define base image
+#
+FROM quay.io/centos/centos:$base_image_tag
+
+
+
+### Install
+#
+RUN dnf upgrade -y
+RUN dnf install -y curl wget
+RUN dnf install -y bzip2 gzip tar unzip xz zip
+RUN dnf install -y git
+RUN dnf install -y autoconf automake gcc gcc-c++ libtool m4 make

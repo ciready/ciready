@@ -8,6 +8,7 @@ CI-related tools already preinstalled.
 ## Docker Hub Repositories
 
 The following [Docker Hub](https://hub.docker.com/) repositories host these CI-ready images:
+- https://hub.docker.com/repository/docker/ciready/centos
 - https://hub.docker.com/repository/docker/ciready/debian
 - https://hub.docker.com/repository/docker/ciready/opensuse
 - https://hub.docker.com/repository/docker/ciready/ubuntu
