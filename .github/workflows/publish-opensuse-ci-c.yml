@@ -32,18 +32,18 @@ jobs:
     strategy:
       matrix:
         base_image_repotag:
-          - 'opensuse/leap:15.2'
           - 'opensuse/leap:15.3'
+          - 'opensuse/leap:15.4'
           - 'opensuse/tumbleweed:latest'
 
         include:
-          - base_image_repotag: 'opensuse/leap:15.2'
-            publish_repotags: |
-              ciready/opensuse:leap-15.2-ci-c
-
           - base_image_repotag: 'opensuse/leap:15.3'
             publish_repotags: |
               ciready/opensuse:leap-15.3-ci-c
+
+          - base_image_repotag: 'opensuse/leap:15.4'
+            publish_repotags: |
+              ciready/opensuse:leap-15.4-ci-c
               ciready/opensuse:leap-latest
 
           - base_image_repotag: 'opensuse/tumbleweed:latest'
