@@ -32,27 +32,30 @@ jobs:
     strategy:
       matrix:
         base_image_tag:
-          - 'stretch'
           - 'buster'
           - 'bullseye'
+          - 'bookworm'
           - 'sid'
 
         include:
-          - base_image_tag: 'stretch'
-            publish_repotags: |
-              ciready/debian:stretch-ci-c
-              ciready/debian:9-ci-c
-
           - base_image_tag: 'buster'
             publish_repotags: |
               ciready/debian:buster-ci-c
               ciready/debian:10-ci-c
-              ciready/debian:latest-ci-c
+              ciready/debian:oldstable-ci-c
 
           - base_image_tag: 'bullseye'
             publish_repotags: |
               ciready/debian:bullseye-ci-c
               ciready/debian:11-ci-c
+              ciready/debian:stable-ci-c
+              ciready/debian:latest-ci-c
+
+          - base_image_tag: 'bookworm'
+            publish_repotags: |
+              ciready/debian:bookworm-ci-c
+              ciready/debian:12-ci-c
+              ciready/debian:testing-ci-c
 
           - base_image_tag: 'sid'
             publish_repotags: |
