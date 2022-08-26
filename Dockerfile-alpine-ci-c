@@ -1,0 +1,35 @@
+### Get CLI arguments
+#
+ARG base_image_tag
+
+
+
+### Define base image
+#
+FROM alpine:$base_image_tag
+
+
+
+### Install
+#
+RUN apk add \
+    alpine-sdk \
+    autoconf \
+    automake \
+    bzip2 \
+    curl \
+    diffutils \
+    file \
+    gzip \
+    git \
+    gcc \
+    libtool \
+    m4 \
+    make \
+    tar \
+    unzip \
+    wget \
+    xz \
+    zip \
+    && \
+    rm -rf /var/cache/apk/*
