@@ -16,6 +16,7 @@ RUN apk add \
     alpine-sdk \
     autoconf \
     automake \
+    bash \
     bzip2 \
     curl \
     diffutils \
