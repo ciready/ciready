@@ -32,14 +32,9 @@ jobs:
     strategy:
       matrix:
         base_image_tag:
-          - 'stream8'
           - 'stream9'
 
         include:
-          - base_image_tag: 'stream8'
-            publish_repotags: |
-              ciready/centos:stream-8-ci-c
-
           - base_image_tag: 'stream9'
             publish_repotags: |
               ciready/centos:stream-9-ci-c
