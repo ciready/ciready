@@ -18,3 +18,7 @@ RUN pacman -Syu --noconfirm bzip2 gzip tar unzip xz zip
 RUN pacman -Syu --noconfirm git
 RUN pacman -Syu --noconfirm autoconf automake gcc libtool m4 make
 RUN pacman -Syu --noconfirm inetutils
+
+# Calling 'fakeroot' started to hang the system at some point.
+# This is the (temporary) workaround (src: https://github.com/docker/for-mac/issues/7331):
+RUN pacman -U   --noconfirm https://archive.archlinux.org/packages/f/fakeroot/fakeroot-1.34-1-x86_64.pkg.tar.zst
