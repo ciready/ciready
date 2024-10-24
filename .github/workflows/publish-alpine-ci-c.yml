@@ -32,22 +32,22 @@ jobs:
     strategy:
       matrix:
         base_image_tag:
-          - '3.14'
-          - '3.15'
-          - '3.16'
+          - '3.18'
+          - '3.19'
+          - '3.20'
 
         include:
-          - base_image_tag: '3.14'
+          - base_image_tag: '3.18'
             publish_repotags: |
-              ciready/alpine:3.14-ci-c
+              ciready/alpine:3.18-ci-c
 
-          - base_image_tag: '3.15'
+          - base_image_tag: '3.19'
             publish_repotags: |
-              ciready/alpine:3.15-ci-c
+              ciready/alpine:3.19-ci-c
 
-          - base_image_tag: '3.16'
+          - base_image_tag: '3.20'
             publish_repotags: |
-              ciready/alpine:3.16-ci-c
+              ciready/alpine:3.20-ci-c
               ciready/alpine:latest-ci-c
 
 
