@@ -34,6 +34,7 @@ jobs:
         base_image_tag:
           - '8-base:latest'
           - '9-base:latest'
+          - '10-base:latest'
 
         include:
           - base_image_tag: '8-base:latest'
@@ -43,7 +44,10 @@ jobs:
           - base_image_tag: '9-base:latest'
             publish_repotags: |
               ciready/almalinux:9-ci-c
-              ciready/almalinux:latest-ci-c
+
+          - base_image_tag: '10-base:latest'
+            publish_repotags: |
+              ciready/almalinux:10-ci-c
 
 
 
