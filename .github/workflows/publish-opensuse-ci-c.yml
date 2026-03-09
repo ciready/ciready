@@ -8,14 +8,14 @@ on:
       - master
     paths:
       - '.github/workflows/publish-opensuse-ci-c'
-      - 'Dockerfile-opensuse-ci-c'
+      - 'dockerfiles/opensuse-ci-c'
 
   push:
     branches:
       - master
     paths:
       - '.github/workflows/publish-opensuse-ci-c'
-      - 'Dockerfile-opensuse-ci-c'
+      - 'dockerfiles/opensuse-ci-c'
 
   workflow_dispatch:
 
@@ -77,7 +77,7 @@ jobs:
           build-args: |
             base_image_repotag=${{matrix.base_image_repotag}}
           context: .
-          file: ./Dockerfile-opensuse-ci-c
+          file: ./dockerfiles/opensuse-ci-c
           platforms: linux/amd64
           push: true
           tags: ${{ matrix.publish_repotags }}

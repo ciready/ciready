@@ -23,7 +23,7 @@ BASE_IMAGE_TAG=$1
 ### Build
 #
 docker build \
-    --file Dockerfile-ubuntu-ci-c \
+    --file dockerfiles/ubuntu-ci-c \
     --build-arg base_image_tag=$BASE_IMAGE_TAG \
     --tag ciready/ubuntu:$BASE_IMAGE_TAG-ci-c \
     .

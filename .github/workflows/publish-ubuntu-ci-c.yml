@@ -8,14 +8,14 @@ on:
       - master
     paths:
       - '.github/workflows/publish-ubuntu-ci-c'
-      - 'Dockerfile-ubuntu-ci-c'
+      - 'dockerfiles/ubuntu-ci-c'
 
   push:
     branches:
       - master
     paths:
       - '.github/workflows/publish-ubuntu-ci-c'
-      - 'Dockerfile-ubuntu-ci-c'
+      - 'dockerfiles/ubuntu-ci-c'
 
   workflow_dispatch:
 
@@ -90,7 +90,7 @@ jobs:
           build-args: |
             base_image_tag=${{matrix.base_image_tag}}
           context: .
-          file: ./Dockerfile-ubuntu-ci-c
+          file: ./dockerfiles/ubuntu-ci-c
           platforms: linux/amd64
           push: true
           tags: ${{ matrix.publish_repotags }}

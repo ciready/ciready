@@ -8,14 +8,14 @@ on:
       - master
     paths:
       - '.github/workflows/publish-almalinux-ci-c'
-      - 'Dockerfile-almalinux-ci-c'
+      - 'dockerfiles/almalinux-ci-c'
 
   push:
     branches:
       - master
     paths:
       - '.github/workflows/publish-almalinux-ci-c'
-      - 'Dockerfile-almalinux-ci-c'
+      - 'dockerfiles/almalinux-ci-c'
 
   workflow_dispatch:
 
@@ -76,7 +76,7 @@ jobs:
           build-args: |
             base_image_tag=${{matrix.base_image_tag}}
           context: .
-          file: ./Dockerfile-almalinux-ci-c
+          file: ./dockerfiles/almalinux-ci-c
           platforms: linux/amd64
           push: true
           tags: ${{ matrix.publish_repotags }}

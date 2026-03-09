@@ -8,14 +8,14 @@ on:
       - master
     paths:
       - '.github/workflows/publish-centos-ci-c'
-      - 'Dockerfile-centos-ci-c'
+      - 'dockerfiles/centos-ci-c'
 
   push:
     branches:
       - master
     paths:
       - '.github/workflows/publish-centos-ci-c'
-      - 'Dockerfile-centos-ci-c'
+      - 'dockerfiles/centos-ci-c'
 
   workflow_dispatch:
 
@@ -71,7 +71,7 @@ jobs:
           build-args: |
             base_image_tag=${{matrix.base_image_tag}}
           context: .
-          file: ./Dockerfile-centos-ci-c
+          file: ./dockerfiles/centos-ci-c
           platforms: linux/amd64
           push: true
           tags: ${{ matrix.publish_repotags }}

@@ -8,14 +8,14 @@ on:
       - master
     paths:
       - '.github/workflows/publish-alpine-ci-c'
-      - 'Dockerfile-alpine-ci-c'
+      - 'dockerfiles/alpine-ci-c'
 
   push:
     branches:
       - master
     paths:
       - '.github/workflows/publish-alpine-ci-c'
-      - 'Dockerfile-alpine-ci-c'
+      - 'dockerfiles/alpine-ci-c'
 
   workflow_dispatch:
 
@@ -76,7 +76,7 @@ jobs:
           build-args: |
             base_image_tag=${{matrix.base_image_tag}}
           context: .
-          file: ./Dockerfile-alpine-ci-c
+          file: ./dockerfiles/alpine-ci-c
           platforms: linux/amd64
           push: true
           tags: ${{ matrix.publish_repotags }}

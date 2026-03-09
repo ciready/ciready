@@ -8,14 +8,14 @@ on:
       - master
     paths:
       - '.github/workflows/publish-debian-ci-c'
-      - 'Dockerfile-debian-ci-c'
+      - 'dockerfiles/debian-ci-c'
 
   push:
     branches:
       - master
     paths:
       - '.github/workflows/publish-debian-ci-c'
-      - 'Dockerfile-debian-ci-c'
+      - 'dockerfiles/debian-ci-c'
 
   workflow_dispatch:
 
@@ -84,7 +84,7 @@ jobs:
           build-args: |
             base_image_tag=${{matrix.base_image_tag}}
           context: .
-          file: ./Dockerfile-debian-ci-c
+          file: ./dockerfiles/debian-ci-c
           platforms: linux/amd64
           push: true
           tags: ${{ matrix.publish_repotags }}
