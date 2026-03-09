@@ -17,9 +17,6 @@ on:
       - '.github/workflows/publish-ubuntu-ci-c'
       - 'Dockerfile-ubuntu-ci-c'
 
-  schedule:
-    - cron: '15 5 * * 0'
-
   workflow_dispatch:
 
 
