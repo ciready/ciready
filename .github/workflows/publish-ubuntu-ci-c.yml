@@ -32,6 +32,7 @@ jobs:
           - '20.04'
           - '22.04'
           - '24.04'
+          - '26.04'
           - 'rolling'
 
         include:
@@ -49,7 +50,11 @@ jobs:
             publish_repotags: |
               ciready/ubuntu:24.04-ci-c
               ciready/ubuntu:noble-ci-c
-              ciready/ubuntu:latest-ci-c
+
+          - base_image_tag: '26.04'
+            publish_repotags: |
+              ciready/ubuntu:26.04-ci-c
+              ciready/ubuntu:resolute-ci-c
 
           - base_image_tag: 'rolling'
             publish_repotags: |
